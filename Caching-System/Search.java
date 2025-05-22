@@ -1,5 +1,6 @@
 import java.util.LinkedHashMap;
 import java.util.Scanner;
+import lib.SearchValidator;
 
 class Search {
 
@@ -15,6 +16,7 @@ class Search {
 
   public void search(Scanner sc) {
 
+    // search functionality
     int cont = 1;
     while (cont != 0) {
       System.out.println("Enter the keyword you want to search:");
@@ -22,13 +24,14 @@ class Search {
       String result = getSearchResult(keyword, sc);
       System.out.println(result);
       System.out.println("Do you want to continue(1/0):");
-      cont = sc.nextInt();
+      cont = SearchValidator.integerValidator(sc);
       sc.nextLine();
     }
   }
 
   public String getSearchResult(String key, Scanner sc) {
 
+    // store the result in cache if not already present
     String searchResult;
     if (map.containsKey(key)) {
       System.out.println("The key is found in cache");
